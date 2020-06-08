@@ -158,7 +158,7 @@ def get_regions(account, outputfilter={}):
             outputfilter["regions"]
         )
 
-    regions = pyjq.all(".Regions[]{}".format(region_filter), region_data)
+    regions = pyjq.all(".Regions[]?{}".format(region_filter), region_data)
     return regions
 
 
@@ -278,7 +278,6 @@ def get_account_stats(account, all_resources=False):
                         bucket_region = get_parameter_file(
                             region, "s3", "get-bucket-location", bucket
                         )["LocationConstraint"]
-
                         # Convert the value to a name.
                         # See https://docs.aws.amazon.com/general/latest/gr/rande.html#s3_region
                         if bucket_region is None:

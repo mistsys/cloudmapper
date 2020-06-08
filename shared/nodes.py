@@ -325,7 +325,7 @@ class Ec2(Leaf):
 
     @property
     def tags(self):
-        return pyjq.all(".Tags[]", self._json_blob)
+        return pyjq.all(".Tags[]?", self._json_blob)
 
     @property
     def subnets(self):
@@ -704,7 +704,7 @@ class Lambda(Leaf):
 
     @property
     def tags(self):
-        return pyjq.all(".tags[]", self._json_blob)
+        return pyjq.all(".tags[]?", self._json_blob)
 
     @property
     def is_public(self):
