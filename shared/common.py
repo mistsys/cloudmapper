@@ -275,11 +275,12 @@ def get_account_stats(account, all_resources=False):
                     )
                     for bucket in buckets:
                         # Get the bucket's location
-                        bucket_region = get_parameter_file(
-                            region, "s3", "get-bucket-location", bucket
-                        )["LocationConstraint"]
+                        # bucket_region = get_parameter_file(
+                        #     region, "s3", "get-bucket-location", bucket
+                        # )["LocationConstraint"]
                         # Convert the value to a name.
                         # See https://docs.aws.amazon.com/general/latest/gr/rande.html#s3_region
+                        bucket_region = "us-east-1"
                         if bucket_region is None:
                             bucket_region = "us-east-1"
                         elif bucket_region == "EU":
